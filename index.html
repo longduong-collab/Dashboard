@@ -532,6 +532,154 @@
       ::-webkit-scrollbar-thumb:hover {
         background: var(--text-muted);
       }
+
+      /* Level Group Filter */
+      .level-filter-panel {
+        background: linear-gradient(135deg, rgba(99,102,241,0.08) 0%, rgba(79,70,229,0.05) 100%);
+        border: 1px solid rgba(99,102,241,0.25);
+        border-radius: 16px;
+        padding: 1.25rem 1.75rem;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        align-items: center;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .level-filter-panel::before {
+        content: '';
+        position: absolute;
+        top: 0; left: 0;
+        width: 100%; height: 3px;
+        background: linear-gradient(90deg, #6366f1, #a855f7, #ec4899);
+        border-radius: 3px 3px 0 0;
+      }
+
+      .filter-label {
+        font-family: 'Outfit', sans-serif;
+        font-weight: 600;
+        font-size: 0.95rem;
+        color: #a5b4fc;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        white-space: nowrap;
+      }
+
+      .filter-range-group {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .filter-range-input {
+        background: var(--bg-base);
+        border: 1px solid rgba(99,102,241,0.4);
+        border-radius: 8px;
+        padding: 0.4rem 0.75rem;
+        color: var(--text-primary);
+        font-family: 'Outfit', sans-serif;
+        font-size: 0.95rem;
+        font-weight: 600;
+        width: 80px;
+        outline: none;
+        text-align: center;
+        transition: var(--transition-smooth);
+      }
+
+      .filter-range-input:focus {
+        border-color: #6366f1;
+        box-shadow: 0 0 0 3px rgba(99,102,241,0.15);
+      }
+
+      .filter-sep {
+        color: var(--text-muted);
+        font-weight: 600;
+      }
+
+      .filter-presets {
+        display: flex;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+        flex: 1;
+      }
+
+      .preset-btn {
+        background: rgba(99,102,241,0.1);
+        border: 1px solid rgba(99,102,241,0.25);
+        border-radius: 20px;
+        padding: 0.3rem 0.85rem;
+        color: var(--text-secondary);
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        font-size: 0.8rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: var(--transition-smooth);
+        white-space: nowrap;
+      }
+
+      .preset-btn:hover {
+        background: rgba(99,102,241,0.25);
+        color: var(--text-primary);
+        border-color: #6366f1;
+      }
+
+      .preset-btn.active {
+        background: linear-gradient(135deg, #6366f1, #4f46e5);
+        color: #fff;
+        border-color: #6366f1;
+        box-shadow: 0 2px 8px rgba(99,102,241,0.35);
+      }
+
+      .filter-apply-btn {
+        background: linear-gradient(135deg, #6366f1, #4f46e5);
+        border: none;
+        border-radius: 10px;
+        padding: 0.45rem 1.25rem;
+        color: #fff;
+        font-family: 'Outfit', sans-serif;
+        font-weight: 700;
+        font-size: 0.9rem;
+        cursor: pointer;
+        transition: var(--transition-smooth);
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+      }
+
+      .filter-apply-btn:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 4px 14px rgba(99,102,241,0.4);
+      }
+
+      .filter-active-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        background: linear-gradient(135deg, rgba(99,102,241,0.2), rgba(168,85,247,0.15));
+        border: 1px solid rgba(99,102,241,0.35);
+        border-radius: 20px;
+        padding: 0.25rem 0.85rem;
+        font-size: 0.8rem;
+        font-weight: 600;
+        color: #a5b4fc;
+        margin-left: auto;
+        white-space: nowrap;
+      }
+
+      .filter-active-badge .dot {
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: #a855f7;
+        animation: pulse-dot 1.5s ease-in-out infinite;
+      }
+
+      @keyframes pulse-dot {
+        0%, 100% { opacity: 1; transform: scale(1); }
+        50% { opacity: 0.5; transform: scale(0.8); }
+      }
     </style>
   </head>
 
@@ -558,6 +706,39 @@
           </span>
         </div>
       </header>
+
+      <!-- Level Group Filter Panel -->
+      <div class="level-filter-panel" id="level-filter-panel">
+        <span class="filter-label">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M22 3H2l8 9.46V19l4 2V12.46z"/>
+          </svg>
+          Lọc nhóm Level:
+        </span>
+        <div class="filter-range-group">
+          <span style="font-size:0.8rem;color:var(--text-muted)">Từ</span>
+          <input type="number" id="filter-from" class="filter-range-input" value="1" min="1" max="9999" placeholder="1" />
+          <span class="filter-sep">→</span>
+          <input type="number" id="filter-to" class="filter-range-input" value="100" min="1" max="9999" placeholder="100" />
+          <span style="font-size:0.8rem;color:var(--text-muted)">Đến</span>
+        </div>
+        <div class="filter-presets" id="filter-presets">
+          <!-- Populated by JS dynamically -->
+        </div>
+        <button class="filter-apply-btn" onclick="applyLevelGroupFilter()">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M20 6L9 17l-5-5"/>
+          </svg>
+          Áp dụng
+        </button>
+        <button class="preset-btn" style="border-color:rgba(239,68,68,0.3);color:#f87171;" onclick="resetLevelGroupFilter()" title="Reset về toàn bộ">
+          ✕ Reset
+        </button>
+        <span class="filter-active-badge" id="filter-active-badge">
+          <span class="dot"></span>
+          <span id="filter-badge-text">Tất cả levels</span>
+        </span>
+      </div>
 
       <!-- CSV Uploader Panel -->
       <div class="card" style="margin-bottom: 2rem">
@@ -3599,6 +3780,126 @@
       let chartInstance = null;
       let trendChartInstance = null;
 
+      // Level Group Filter state
+      let levelGroupFrom = null; // null = no filter
+      let levelGroupTo = null;
+
+      function getFilteredDataset() {
+        if (levelGroupFrom === null && levelGroupTo === null) return dataset;
+        const from = levelGroupFrom !== null ? levelGroupFrom : -Infinity;
+        const to = levelGroupTo !== null ? levelGroupTo : Infinity;
+        return dataset.filter(item => item.level >= from && item.level <= to);
+      }
+
+      function buildPresetButtons() {
+        const maxLevel = dataset.length > 0 ? Math.max(...dataset.map(d => d.level)) : 100;
+        const minLevel = dataset.length > 0 ? Math.min(...dataset.map(d => d.level)) : 1;
+        const span = maxLevel - minLevel + 1;
+        const chunkSize = Math.ceil(span / 4);
+
+        const presets = [
+          { label: 'Tất cả', from: minLevel, to: maxLevel },
+        ];
+
+        // Create 4 equal chunks
+        for (let i = 0; i < 4; i++) {
+          const f = minLevel + i * chunkSize;
+          const t = Math.min(minLevel + (i + 1) * chunkSize - 1, maxLevel);
+          if (f <= maxLevel) {
+            presets.push({ label: `Lv ${f}–${t}`, from: f, to: t });
+          }
+        }
+
+        const container = document.getElementById('filter-presets');
+        container.innerHTML = '';
+        presets.forEach(p => {
+          const btn = document.createElement('button');
+          btn.className = 'preset-btn';
+          btn.textContent = p.label;
+          btn.dataset.from = p.from;
+          btn.dataset.to = p.to;
+          btn.onclick = () => {
+            document.getElementById('filter-from').value = p.from;
+            document.getElementById('filter-to').value = p.to;
+            applyLevelGroupFilter();
+          };
+          container.appendChild(btn);
+        });
+
+        // Update input max
+        document.getElementById('filter-from').max = maxLevel;
+        document.getElementById('filter-to').max = maxLevel;
+        document.getElementById('filter-to').value = maxLevel;
+      }
+
+      function applyLevelGroupFilter() {
+        const fromVal = parseInt(document.getElementById('filter-from').value);
+        const toVal = parseInt(document.getElementById('filter-to').value);
+
+        if (!isNaN(fromVal) && !isNaN(toVal) && fromVal <= toVal) {
+          const maxLevel = dataset.length > 0 ? Math.max(...dataset.map(d => d.level)) : 100;
+          const minLevel = dataset.length > 0 ? Math.min(...dataset.map(d => d.level)) : 1;
+          if (fromVal === minLevel && toVal === maxLevel) {
+            levelGroupFrom = null;
+            levelGroupTo = null;
+          } else {
+            levelGroupFrom = fromVal;
+            levelGroupTo = toVal;
+          }
+        } else {
+          levelGroupFrom = null;
+          levelGroupTo = null;
+        }
+
+        updateFilterBadge();
+        updatePresetButtonStates();
+        updateDashboard();
+      }
+
+      function resetLevelGroupFilter() {
+        const maxLevel = dataset.length > 0 ? Math.max(...dataset.map(d => d.level)) : 100;
+        const minLevel = dataset.length > 0 ? Math.min(...dataset.map(d => d.level)) : 1;
+        document.getElementById('filter-from').value = minLevel;
+        document.getElementById('filter-to').value = maxLevel;
+        levelGroupFrom = null;
+        levelGroupTo = null;
+        updateFilterBadge();
+        updatePresetButtonStates();
+        updateDashboard();
+      }
+
+      function updateFilterBadge() {
+        const badge = document.getElementById('filter-active-badge');
+        const text = document.getElementById('filter-badge-text');
+        if (levelGroupFrom === null && levelGroupTo === null) {
+          text.textContent = 'Tất cả levels';
+          badge.style.borderColor = 'rgba(99,102,241,0.35)';
+          badge.querySelector('.dot').style.background = '#a855f7';
+        } else {
+          text.textContent = `Level ${levelGroupFrom} → ${levelGroupTo} (${getFilteredDataset().length} levels)`;
+          badge.style.borderColor = 'rgba(16,185,129,0.4)';
+          badge.querySelector('.dot').style.background = '#10b981';
+        }
+      }
+
+      function updatePresetButtonStates() {
+        const from = levelGroupFrom;
+        const to = levelGroupTo;
+        const btns = document.querySelectorAll('#filter-presets .preset-btn');
+        btns.forEach(btn => {
+          const bFrom = parseInt(btn.dataset.from);
+          const bTo = parseInt(btn.dataset.to);
+          const isAll = from === null && to === null;
+          if (isAll && btn.textContent === 'Tất cả') {
+            btn.classList.add('active');
+          } else if (bFrom === from && bTo === to) {
+            btn.classList.add('active');
+          } else {
+            btn.classList.remove('active');
+          }
+        });
+      }
+
       // Initialize elements
       document.getElementById('ltv-threshold').addEventListener('input', (e) => {
         ltvThreshold = parseFloat(e.target.value);
@@ -3661,7 +3962,7 @@
       }
 
       function computeGroupAverage(quadrant) {
-        const filtered = dataset.filter((item) => getQuadrant(item) === quadrant);
+        const filtered = getFilteredDataset().filter((item) => getQuadrant(item) === quadrant);
         if (filtered.length === 0) return null;
 
         const sum = (key) => filtered.reduce((acc, curr) => acc + (curr[key] || 0), 0);
@@ -3954,7 +4255,7 @@
           ? overlaySelect.options[overlaySelect.selectedIndex].text
           : 'Play Time';
 
-        const filtered = dataset.filter((item) => {
+        const filtered = getFilteredDataset().filter((item) => {
           const matchesSearch = query === '' || item.level.toString().includes(query);
           if (!matchesSearch) return false;
 
@@ -4170,9 +4471,10 @@
       }
 
       function updateDashboard() {
-        // Recalculate counts
+        // Recalculate counts using filtered dataset
+        const filteredData = getFilteredDataset();
         let counts = { q1: 0, q2: 0, q3: 0, q4: 0 };
-        dataset.forEach((item) => {
+        filteredData.forEach((item) => {
           counts[getQuadrant(item)]++;
         });
 
@@ -4197,13 +4499,13 @@
       function renderChart() {
         const ctx = document.getElementById('quadrantChart').getContext('2d');
 
-        // Build datasets
+        // Build datasets using filtered dataset
         const dataQ1 = [];
         const dataQ2 = [];
         const dataQ3 = [];
         const dataQ4 = [];
 
-        dataset.forEach((item) => {
+        getFilteredDataset().forEach((item) => {
           const q = getQuadrant(item);
           const pt = {
             x: item.abandonment_rate,
@@ -4594,6 +4896,8 @@
           mergedList.forEach((item) => dataset.push(item));
 
           populateSelectors();
+          buildPresetButtons();
+          resetLevelGroupFilter();
           updateDashboard();
 
           document.getElementById('data-size-badge').innerText =
@@ -4641,8 +4945,8 @@
         const barMetric = barMetricSelect ? barMetricSelect.value : 'failure_rate';
         const lineMetric = lineMetricSelect ? lineMetricSelect.value : 'play_time_sec';
 
-        // Prepare data sorted by level
-        const sortedData = [...dataset].sort((a, b) => a.level - b.level);
+        // Prepare data sorted by level, using filtered dataset
+        const sortedData = [...getFilteredDataset()].sort((a, b) => a.level - b.level);
 
         const labels = sortedData.map((item) => `L${item.level}`);
 
@@ -4834,6 +5138,9 @@
 
       // Initialize dashboard
       populateSelectors();
+      buildPresetButtons();
+      updateFilterBadge();
+      updatePresetButtonStates();
       updateDashboard();
       renderLinearLevelChart();
     </script>
