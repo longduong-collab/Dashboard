@@ -26,13 +26,9 @@
         --text-muted: #64748b;
 
         --color-q1: #10b981;
-        /* Emerald: Good (High LTV, Low Abandon) */
         --color-q2: #3b82f6;
-        /* Blue: High LTV, High Abandon (Hard but profitable) */
         --color-q3: #eab308;
-        /* Yellow: Low LTV, Low Abandon (Easy but low monetization) */
         --color-q4: #ef4444;
-        /* Red: Low LTV, High Abandon (Problematic - Drop & Low monetization) */
 
         --shadow-premium: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
         --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -43,7 +39,6 @@
         margin: 0;
         padding: 0;
       }
-
       body {
         font-family: 'Plus Jakarta Sans', sans-serif;
         background-color: var(--bg-base);
@@ -52,7 +47,6 @@
         padding: 2rem;
         min-height: 100vh;
       }
-
       h1,
       h2,
       h3,
@@ -62,7 +56,6 @@
         font-family: 'Outfit', sans-serif;
         font-weight: 700;
       }
-
       .container {
         max-width: 1600px;
         margin: 0 auto;
@@ -70,8 +63,6 @@
         flex-direction: column;
         gap: 2rem;
       }
-
-      /* Header section */
       header {
         display: flex;
         justify-content: space-between;
@@ -79,7 +70,6 @@
         border-bottom: 1px solid var(--border-color);
         padding-bottom: 1.5rem;
       }
-
       .header-title h1 {
         font-size: 2.2rem;
         background: linear-gradient(135deg, #a5b4fc, #6366f1, #4f46e5);
@@ -87,19 +77,15 @@
         -webkit-text-fill-color: transparent;
         margin-bottom: 0.25rem;
       }
-
       .header-title p {
         color: var(--text-secondary);
         font-size: 0.95rem;
       }
-
-      /* KPI Cards Grid */
       .kpi-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
         gap: 1.5rem;
       }
-
       .kpi-card {
         background-color: var(--bg-surface);
         border: 1px solid var(--border-color);
@@ -113,7 +99,6 @@
         position: relative;
         overflow: hidden;
       }
-
       .kpi-card::before {
         content: '';
         position: absolute;
@@ -123,61 +108,49 @@
         height: 100%;
         background: linear-gradient(to bottom, #6366f1, #4f46e5);
       }
-
       .kpi-card.q1-border::before {
         background: var(--color-q1);
       }
-
       .kpi-card.q2-border::before {
         background: var(--color-q2);
       }
-
       .kpi-card.q3-border::before {
         background: var(--color-q3);
       }
-
       .kpi-card.q4-border::before {
         background: var(--color-q4);
       }
-
       .kpi-card:hover {
         transform: translateY(-4px);
         border-color: #3b82f6;
         box-shadow: 0 15px 35px -5px rgba(59, 130, 246, 0.2);
       }
-
       .kpi-title {
         font-size: 0.85rem;
         text-transform: uppercase;
         letter-spacing: 0.05em;
         color: var(--text-secondary);
       }
-
       .kpi-value {
         font-size: 2rem;
         font-weight: 700;
         font-family: 'Outfit', sans-serif;
         color: var(--text-primary);
       }
-
       .kpi-desc {
         font-size: 0.8rem;
         color: var(--text-muted);
       }
-
-      /* Dashboard layout */
       .dashboard-main {
         display: grid;
         grid-template-columns: 3fr 2fr;
         gap: 2rem;
       }
-
       @media (max-width: 1200px) {
         .dashboard-main {
           grid-template-columns: 1fr;
         }
       }
-
       .card {
         background-color: var(--bg-surface);
         border: 1px solid var(--border-color);
@@ -188,13 +161,13 @@
         flex-direction: column;
         gap: 1.25rem;
       }
-
       .card-header {
         display: flex;
         justify-content: space-between;
         align-items: center;
+        flex-wrap: wrap;
+        gap: 0.75rem;
       }
-
       .card-title {
         font-size: 1.3rem;
         font-family: 'Outfit', sans-serif;
@@ -203,13 +176,12 @@
         align-items: center;
         gap: 0.5rem;
       }
-
       .controls {
         display: flex;
         gap: 1rem;
         align-items: center;
+        flex-wrap: wrap;
       }
-
       .control-group {
         display: flex;
         align-items: center;
@@ -217,13 +189,10 @@
         font-size: 0.85rem;
         color: var(--text-secondary);
       }
-
       .slider-input {
         width: 100px;
         accent-color: #6366f1;
       }
-
-      /* Chart container */
       .chart-container {
         position: relative;
         width: 100%;
@@ -232,14 +201,11 @@
         border-radius: 12px;
         padding: 1rem;
       }
-
-      /* Level list / Tab panel */
       .tabs-header {
         display: flex;
         border-bottom: 1px solid var(--border-color);
         gap: 0.5rem;
       }
-
       .tab-btn {
         background: none;
         border: none;
@@ -255,36 +221,29 @@
         align-items: center;
         gap: 0.5rem;
       }
-
       .tab-btn:hover {
         color: var(--text-primary);
       }
-
       .tab-btn.active {
         color: var(--text-primary);
         border-bottom-color: #6366f1;
       }
-
       .tab-btn.q1-tab.active {
         border-bottom-color: var(--color-q1);
         color: var(--color-q1);
       }
-
       .tab-btn.q2-tab.active {
         border-bottom-color: var(--color-q2);
         color: var(--color-q2);
       }
-
       .tab-btn.q3-tab.active {
         border-bottom-color: var(--color-q3);
         color: var(--color-q3);
       }
-
       .tab-btn.q4-tab.active {
         border-bottom-color: var(--color-q4);
         color: var(--color-q4);
       }
-
       .search-box {
         background-color: var(--bg-base);
         border: 1px solid var(--border-color);
@@ -296,12 +255,10 @@
         outline: none;
         transition: var(--transition-smooth);
       }
-
       .search-box:focus {
         border-color: #6366f1;
         box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.2);
       }
-
       .level-list-wrapper {
         max-height: 400px;
         overflow-y: auto;
@@ -309,7 +266,6 @@
         border-radius: 12px;
         background-color: var(--bg-base);
       }
-
       .level-item {
         display: flex;
         justify-content: space-between;
@@ -319,26 +275,21 @@
         cursor: pointer;
         transition: var(--transition-smooth);
       }
-
       .level-item:last-child {
         border-bottom: none;
       }
-
       .level-item:hover {
         background-color: var(--bg-surface-hover);
       }
-
       .level-item.active {
         background-color: rgba(99, 102, 241, 0.15);
         border-left: 3px solid #6366f1;
       }
-
       .level-item-info {
         display: flex;
         align-items: center;
         gap: 1rem;
       }
-
       .level-badge {
         background-color: var(--bg-surface);
         padding: 0.25rem 0.6rem;
@@ -347,50 +298,41 @@
         font-size: 0.85rem;
         border: 1px solid var(--border-color);
       }
-
       .level-item-stats {
         display: flex;
         gap: 1.5rem;
         font-size: 0.85rem;
       }
-
       .stat-value-group {
         display: flex;
         flex-direction: column;
         align-items: flex-end;
       }
-
       .stat-label {
         font-size: 0.7rem;
         color: var(--text-muted);
         text-transform: uppercase;
       }
-
       .stat-val {
         font-weight: 600;
         color: var(--text-primary);
       }
-
-      /* Comparison tool section */
       .comparison-section {
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: 2rem;
       }
-
       @media (max-width: 960px) {
         .comparison-section {
           grid-template-columns: 1fr;
         }
       }
-
       .comparison-selector {
         display: flex;
         gap: 1rem;
         align-items: center;
         margin-bottom: 1rem;
       }
-
       .comparison-select {
         background-color: var(--bg-base);
         border: 1px solid var(--border-color);
@@ -402,7 +344,6 @@
         flex: 1;
         cursor: pointer;
       }
-
       .comparison-grid {
         display: grid;
         grid-template-columns: 1fr auto 1fr;
@@ -413,7 +354,6 @@
         border-radius: 12px;
         border: 1px solid var(--border-color);
       }
-
       .comparison-header {
         text-align: center;
         font-weight: 700;
@@ -423,17 +363,14 @@
         border-radius: 8px;
         border: 1px solid var(--border-color);
       }
-
       .comparison-row {
         display: contents;
       }
-
       .comparison-val {
         text-align: center;
         font-weight: 600;
         padding: 0.5rem;
       }
-
       .comparison-label {
         text-align: center;
         font-size: 0.8rem;
@@ -444,23 +381,17 @@
         border-right: 1px solid var(--border-color);
         background-color: rgba(255, 255, 255, 0.02);
       }
-
-      /* Better/worse indicators */
       .better {
         color: #10b981;
       }
-
       .worse {
         color: #ef4444;
       }
-
-      /* Insights panel */
       .insights-panel {
         display: flex;
         flex-direction: column;
         gap: 1rem;
       }
-
       .insight-card {
         background-color: rgba(99, 102, 241, 0.05);
         border: 1px solid rgba(99, 102, 241, 0.2);
@@ -470,7 +401,6 @@
         flex-direction: column;
         gap: 0.75rem;
       }
-
       .insight-header {
         font-weight: 600;
         color: #a5b4fc;
@@ -478,7 +408,6 @@
         align-items: center;
         gap: 0.5rem;
       }
-
       .insight-list {
         list-style-type: none;
         display: flex;
@@ -486,27 +415,23 @@
         gap: 0.5rem;
         font-size: 0.9rem;
       }
-
       .insight-list li {
         position: relative;
         padding-left: 1.5rem;
         color: var(--text-secondary);
       }
-
       .insight-list li::before {
         content: '→';
         position: absolute;
         left: 0;
         color: #6366f1;
       }
-
       .recommendation-box {
         background-color: rgba(16, 185, 129, 0.05);
         border: 1px solid rgba(16, 185, 129, 0.2);
         border-radius: 12px;
         padding: 1.25rem;
       }
-
       .recommendation-box h4 {
         color: var(--color-q1);
         margin-bottom: 0.5rem;
@@ -514,29 +439,26 @@
         align-items: center;
         gap: 0.5rem;
       }
-
-      /* Scrollbar styling */
       ::-webkit-scrollbar {
         width: 8px;
       }
-
       ::-webkit-scrollbar-track {
         background: var(--bg-base);
       }
-
       ::-webkit-scrollbar-thumb {
         background: var(--border-color);
         border-radius: 4px;
       }
-
       ::-webkit-scrollbar-thumb:hover {
         background: var(--text-muted);
       }
-
-      /* Level Group Filter */
       .level-filter-panel {
-        background: linear-gradient(135deg, rgba(99,102,241,0.08) 0%, rgba(79,70,229,0.05) 100%);
-        border: 1px solid rgba(99,102,241,0.25);
+        background: linear-gradient(
+          135deg,
+          rgba(99, 102, 241, 0.08) 0%,
+          rgba(79, 70, 229, 0.05) 100%
+        );
+        border: 1px solid rgba(99, 102, 241, 0.25);
         border-radius: 16px;
         padding: 1.25rem 1.75rem;
         display: flex;
@@ -546,16 +468,16 @@
         position: relative;
         overflow: hidden;
       }
-
       .level-filter-panel::before {
         content: '';
         position: absolute;
-        top: 0; left: 0;
-        width: 100%; height: 3px;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 3px;
         background: linear-gradient(90deg, #6366f1, #a855f7, #ec4899);
         border-radius: 3px 3px 0 0;
       }
-
       .filter-label {
         font-family: 'Outfit', sans-serif;
         font-weight: 600;
@@ -566,16 +488,14 @@
         gap: 0.5rem;
         white-space: nowrap;
       }
-
       .filter-range-group {
         display: flex;
         align-items: center;
         gap: 0.5rem;
       }
-
       .filter-range-input {
         background: var(--bg-base);
-        border: 1px solid rgba(99,102,241,0.4);
+        border: 1px solid rgba(99, 102, 241, 0.4);
         border-radius: 8px;
         padding: 0.4rem 0.75rem;
         color: var(--text-primary);
@@ -587,27 +507,23 @@
         text-align: center;
         transition: var(--transition-smooth);
       }
-
       .filter-range-input:focus {
         border-color: #6366f1;
-        box-shadow: 0 0 0 3px rgba(99,102,241,0.15);
+        box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
       }
-
       .filter-sep {
         color: var(--text-muted);
         font-weight: 600;
       }
-
       .filter-presets {
         display: flex;
         gap: 0.5rem;
         flex-wrap: wrap;
         flex: 1;
       }
-
       .preset-btn {
-        background: rgba(99,102,241,0.1);
-        border: 1px solid rgba(99,102,241,0.25);
+        background: rgba(99, 102, 241, 0.1);
+        border: 1px solid rgba(99, 102, 241, 0.25);
         border-radius: 20px;
         padding: 0.3rem 0.85rem;
         color: var(--text-secondary);
@@ -618,20 +534,17 @@
         transition: var(--transition-smooth);
         white-space: nowrap;
       }
-
       .preset-btn:hover {
-        background: rgba(99,102,241,0.25);
+        background: rgba(99, 102, 241, 0.25);
         color: var(--text-primary);
         border-color: #6366f1;
       }
-
       .preset-btn.active {
         background: linear-gradient(135deg, #6366f1, #4f46e5);
         color: #fff;
         border-color: #6366f1;
-        box-shadow: 0 2px 8px rgba(99,102,241,0.35);
+        box-shadow: 0 2px 8px rgba(99, 102, 241, 0.35);
       }
-
       .filter-apply-btn {
         background: linear-gradient(135deg, #6366f1, #4f46e5);
         border: none;
@@ -647,18 +560,16 @@
         align-items: center;
         gap: 0.4rem;
       }
-
       .filter-apply-btn:hover {
         transform: translateY(-1px);
-        box-shadow: 0 4px 14px rgba(99,102,241,0.4);
+        box-shadow: 0 4px 14px rgba(99, 102, 241, 0.4);
       }
-
       .filter-active-badge {
         display: inline-flex;
         align-items: center;
         gap: 0.4rem;
-        background: linear-gradient(135deg, rgba(99,102,241,0.2), rgba(168,85,247,0.15));
-        border: 1px solid rgba(99,102,241,0.35);
+        background: linear-gradient(135deg, rgba(99, 102, 241, 0.2), rgba(168, 85, 247, 0.15));
+        border: 1px solid rgba(99, 102, 241, 0.35);
         border-radius: 20px;
         padding: 0.25rem 0.85rem;
         font-size: 0.8rem;
@@ -667,7 +578,6 @@
         margin-left: auto;
         white-space: nowrap;
       }
-
       .filter-active-badge .dot {
         width: 7px;
         height: 7px;
@@ -675,10 +585,34 @@
         background: #a855f7;
         animation: pulse-dot 1.5s ease-in-out infinite;
       }
-
       @keyframes pulse-dot {
-        0%, 100% { opacity: 1; transform: scale(1); }
-        50% { opacity: 0.5; transform: scale(0.8); }
+        0%,
+        100% {
+          opacity: 1;
+          transform: scale(1);
+        }
+        50% {
+          opacity: 0.5;
+          transform: scale(0.8);
+        }
+      }
+      .axis-control-row {
+        display: flex;
+        gap: 1.5rem;
+        flex-wrap: wrap;
+        align-items: center;
+      }
+      .axis-select-group {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+      .axis-select-group select.comparison-select {
+        width: auto;
+        min-width: 190px;
+        padding: 0.4rem 0.8rem;
+        border-radius: 10px;
+        margin: 0;
       }
     </style>
   </head>
@@ -710,28 +644,61 @@
       <!-- Level Group Filter Panel -->
       <div class="level-filter-panel" id="level-filter-panel">
         <span class="filter-label">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-            <path d="M22 3H2l8 9.46V19l4 2V12.46z"/>
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+          >
+            <path d="M22 3H2l8 9.46V19l4 2V12.46z" />
           </svg>
           Lọc nhóm Level:
         </span>
         <div class="filter-range-group">
-          <span style="font-size:0.8rem;color:var(--text-muted)">Từ</span>
-          <input type="number" id="filter-from" class="filter-range-input" value="1" min="1" max="9999" placeholder="1" />
+          <span style="font-size: 0.8rem; color: var(--text-muted)">Từ</span>
+          <input
+            type="number"
+            id="filter-from"
+            class="filter-range-input"
+            value="1"
+            min="1"
+            max="9999"
+            placeholder="1"
+          />
           <span class="filter-sep">→</span>
-          <input type="number" id="filter-to" class="filter-range-input" value="100" min="1" max="9999" placeholder="100" />
-          <span style="font-size:0.8rem;color:var(--text-muted)">Đến</span>
+          <input
+            type="number"
+            id="filter-to"
+            class="filter-range-input"
+            value="100"
+            min="1"
+            max="9999"
+            placeholder="100"
+          />
+          <span style="font-size: 0.8rem; color: var(--text-muted)">Đến</span>
         </div>
-        <div class="filter-presets" id="filter-presets">
-          <!-- Populated by JS dynamically -->
-        </div>
+        <div class="filter-presets" id="filter-presets"></div>
         <button class="filter-apply-btn" onclick="applyLevelGroupFilter()">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-            <path d="M20 6L9 17l-5-5"/>
+          <svg
+            width="14"
+            height="14"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+          >
+            <path d="M20 6L9 17l-5-5" />
           </svg>
           Áp dụng
         </button>
-        <button class="preset-btn" style="border-color:rgba(239,68,68,0.3);color:#f87171;" onclick="resetLevelGroupFilter()" title="Reset về toàn bộ">
+        <button
+          class="preset-btn"
+          style="border-color: rgba(239, 68, 68, 0.3); color: #f87171"
+          onclick="resetLevelGroupFilter()"
+          title="Reset về toàn bộ"
+        >
           ✕ Reset
         </button>
         <span class="filter-active-badge" id="filter-active-badge">
@@ -873,28 +840,28 @@
       <!-- KPI Grid -->
       <div class="kpi-grid">
         <div class="kpi-card q1-border" id="kpi-q1">
-          <span class="kpi-title">Q1: High LTV, Low Drop</span>
+          <span class="kpi-title" id="kpi-q1-title">Q1: High LTV, Low Drop</span>
           <span class="kpi-value" id="kpi-q1-count">0</span>
           <span class="kpi-desc" id="kpi-q1-desc"
             >Optimal levels (High monetization, good retention).</span
           >
         </div>
         <div class="kpi-card q2-border" id="kpi-q2">
-          <span class="kpi-title">Q2: High LTV, High Drop</span>
+          <span class="kpi-title" id="kpi-q2-title">Q2: High LTV, High Drop</span>
           <span class="kpi-value" id="kpi-q2-count">0</span>
           <span class="kpi-desc" id="kpi-q2-desc"
             >Hard but profitable levels (High monetization, high dropoff).</span
           >
         </div>
         <div class="kpi-card q3-border" id="kpi-q3">
-          <span class="kpi-title">Q3: Low LTV, Low Drop</span>
+          <span class="kpi-title" id="kpi-q3-title">Q3: Low LTV, Low Drop</span>
           <span class="kpi-value" id="kpi-q3-count">0</span>
           <span class="kpi-desc" id="kpi-q3-desc"
             >Easy but unmonetized (Low monetization, good retention).</span
           >
         </div>
         <div class="kpi-card q4-border" id="kpi-q4">
-          <span class="kpi-title">Q4: Low LTV, High Drop</span>
+          <span class="kpi-title" id="kpi-q4-title">Q4: Low LTV, High Drop</span>
           <span class="kpi-value" id="kpi-q4-count">0</span>
           <span class="kpi-desc" id="kpi-q4-desc"
             >Problematic (Low monetization, high dropoff). Focus here first!</span
@@ -907,7 +874,7 @@
         <!-- Chart Card -->
         <div class="card">
           <div class="card-header">
-            <span class="card-title">
+            <span class="card-title" id="quadrant-chart-title">
               <svg
                 width="20"
                 height="20"
@@ -921,33 +888,41 @@
               </svg>
               Quadrant Analysis: Abandonment Rate vs. Ad LTV
             </span>
-            <div class="controls">
-              <div class="control-group">
-                <label for="ltv-threshold">LTV Axis ($):</label>
-                <input
-                  type="range"
-                  id="ltv-threshold"
-                  class="slider-input"
-                  min="0.01"
-                  max="0.12"
-                  step="0.005"
-                  value="0.05"
-                />
-                <span id="ltv-threshold-val">$0.05</span>
-              </div>
-              <div class="control-group">
-                <label for="abandon-threshold">Abandon Axis (%):</label>
-                <input
-                  type="range"
-                  id="abandon-threshold"
-                  class="slider-input"
-                  min="1.0"
-                  max="6.0"
-                  step="0.1"
-                  value="3.0"
-                />
-                <span id="abandon-threshold-val">3.0%</span>
-              </div>
+          </div>
+          <div class="axis-control-row">
+            <div class="axis-select-group">
+              <label
+                for="x-axis-metric-select"
+                style="font-size: 0.85rem; color: var(--text-secondary)"
+                >Trục X:</label
+              >
+              <select
+                id="x-axis-metric-select"
+                class="comparison-select"
+                onchange="onAxisMetricChange('x')"
+              ></select>
+            </div>
+            <div class="axis-select-group">
+              <label
+                for="y-axis-metric-select"
+                style="font-size: 0.85rem; color: var(--text-secondary)"
+                >Trục Y:</label
+              >
+              <select
+                id="y-axis-metric-select"
+                class="comparison-select"
+                onchange="onAxisMetricChange('y')"
+              ></select>
+            </div>
+            <div class="control-group">
+              <label for="x-threshold" id="x-threshold-label">X Axis:</label>
+              <input type="range" id="x-threshold" class="slider-input" />
+              <span id="x-threshold-val"></span>
+            </div>
+            <div class="control-group">
+              <label for="y-threshold" id="y-threshold-label">Y Axis:</label>
+              <input type="range" id="y-threshold" class="slider-input" />
+              <span id="y-threshold-val"></span>
             </div>
           </div>
           <div class="chart-container">
@@ -1123,31 +1098,32 @@
         </div>
         <div
           style="padding: 0 1.5rem 1rem 1.5rem; font-size: 0.85rem; color: var(--text-secondary)"
+          id="linear-legend-container"
         >
           <div style="display: flex; gap: 2rem; flex-wrap: wrap">
             <div style="display: flex; align-items: center; gap: 0.5rem">
               <div
                 style="width: 12px; height: 12px; background: var(--color-q1); border-radius: 2px"
               ></div>
-              <span>Q1: High LTV, Low Abandon</span>
+              <span id="legend-q1-label">Q1: High LTV, Low Abandon</span>
             </div>
             <div style="display: flex; align-items: center; gap: 0.5rem">
               <div
                 style="width: 12px; height: 12px; background: var(--color-q2); border-radius: 2px"
               ></div>
-              <span>Q2: High LTV, High Abandon</span>
+              <span id="legend-q2-label">Q2: High LTV, High Abandon</span>
             </div>
             <div style="display: flex; align-items: center; gap: 0.5rem">
               <div
                 style="width: 12px; height: 12px; background: var(--color-q3); border-radius: 2px"
               ></div>
-              <span>Q3: Low LTV, Low Abandon</span>
+              <span id="legend-q3-label">Q3: Low LTV, Low Abandon</span>
             </div>
             <div style="display: flex; align-items: center; gap: 0.5rem">
               <div
                 style="width: 12px; height: 12px; background: var(--color-q4); border-radius: 2px"
               ></div>
-              <span>Q4: Low LTV, High Abandon</span>
+              <span id="legend-q4-label">Q4: Low LTV, High Abandon</span>
             </div>
           </div>
         </div>
@@ -1171,7 +1147,6 @@
           </span>
         </div>
         <div class="comparison-section">
-          <!-- Selectors & Side-by-side -->
           <div>
             <div class="comparison-selector">
               <div style="flex: 1">
@@ -1180,7 +1155,6 @@
                 >
                 <select id="compare-a" class="comparison-select" onchange="runComparison()">
                   <option value="q1-avg">Average Q1 (Best Performing)</option>
-                  <!-- Levels populated dynamically -->
                 </select>
               </div>
               <div style="font-weight: 700; color: var(--text-muted); margin-top: 1rem">VS</div>
@@ -1190,16 +1164,12 @@
                 >
                 <select id="compare-b" class="comparison-select" onchange="runComparison()">
                   <option value="q4-avg" selected>Average Q4 (Needs Improvement)</option>
-                  <!-- Levels populated dynamically -->
                 </select>
               </div>
             </div>
-            <div class="comparison-grid" id="comparison-grid">
-              <!-- Populated by JS -->
-            </div>
+            <div class="comparison-grid" id="comparison-grid"></div>
           </div>
 
-          <!-- Insights Engine & Actions -->
           <div class="insights-panel">
             <div class="insight-card">
               <div class="insight-header">
@@ -1217,14 +1187,9 @@
                 </svg>
                 Key Diagnostic Insights
               </div>
-              <ul class="insight-list" id="insights-list">
-                <!-- Populated dynamically -->
-              </ul>
+              <ul class="insight-list" id="insights-list"></ul>
             </div>
-
-            <div class="recommendation-box" id="recommendations-box">
-              <!-- Populated dynamically -->
-            </div>
+            <div class="recommendation-box" id="recommendations-box"></div>
           </div>
         </div>
       </div>
@@ -1234,34 +1199,46 @@
     <script>
       // Helper functions for CSV parsing
       function parseFloatVal(val) {
-        if (!val) return 0;
-        const trimmed = String(val).replace(/[$,%]/g, '').trim();
-        const parsed = parseFloat(trimmed);
+        if (val === null || val === undefined) return 0;
+        val = val
+          .toString()
+          .replace(/[\$\%,]/g, '')
+          .trim();
+        const parsed = parseFloat(val);
         return isNaN(parsed) ? 0 : parsed;
       }
 
       function parseTime(timeStr) {
-        if (!timeStr) return null;
-        let hours = 0;
-        let minutes = 0;
-        let seconds = 0;
-
-        if (typeof timeStr === 'string') {
-          const parts = timeStr.split(/[hms]/i).filter((p) => p.trim());
-          if (parts.length === 3) {
-            hours = parseInt(parts[0]);
-            minutes = parseInt(parts[1]);
-            seconds = parseInt(parts[2]);
-          } else if (parts.length === 2) {
-            minutes = parseInt(parts[0]);
-            seconds = parseInt(parts[1]);
+        if (!timeStr || timeStr.toString().trim() === '') return null;
+        timeStr = timeStr.toString().trim().toLowerCase();
+        let hours = 0,
+          minutes = 0,
+          seconds = 0;
+        let hMatch = timeStr.match(/(\d+)\s*h/);
+        let mMatch = timeStr.match(/(\d+)\s*m/);
+        let sMatch = timeStr.match(/(\d+)\s*s/);
+        if (hMatch) hours = parseInt(hMatch[1]);
+        if (mMatch) minutes = parseInt(mMatch[1]);
+        if (sMatch) seconds = parseInt(sMatch[1]);
+        if (!hMatch && !mMatch && !sMatch) {
+          if (timeStr.includes(':')) {
+            let parts = timeStr.split(':').map(Number);
+            if (parts.length === 3) {
+              hours = parts[0];
+              minutes = parts[1];
+              seconds = parts[2];
+            } else if (parts.length === 2) {
+              minutes = parts[0];
+              seconds = parts[1];
+            }
+          } else {
+            let val = parseInt(timeStr);
+            if (!isNaN(val)) seconds = val;
           }
-        } else {
-          let val = parseInt(timeStr);
-          if (!isNaN(val)) seconds = val;
         }
         return hours * 3600 + minutes * 60 + seconds;
       }
+
       const dataset = [
         {
           level: 1,
@@ -3667,7 +3644,7 @@
 
       // Failure Rate Data from CSV
       const failureRateMap = {
-        1: 0,
+        1: 0.0,
         2: 0.42,
         3: 1.32,
         4: 1.58,
@@ -3773,9 +3750,130 @@
       dataset.forEach((item) => {
         item.failure_rate = failureRateMap[item.level] || 0;
       });
-      // Default thresholds
-      let ltvThreshold = 0.05;
-      let abandonThreshold = 3.0;
+
+      // ====================== METRIC CONFIGS ======================
+      // Defines label, formatting, and suggested threshold ranges for every metric
+      // that can be plotted on the Quadrant Analysis chart's X / Y axes.
+      const METRIC_CONFIGS = {
+        abandonment_rate: {
+          label: 'Abandonment Rate (%)',
+          shortLabel: 'Abandon',
+          group: 'Gameplay',
+          format: (v) => `${v.toFixed(2)}%`,
+          suffix: '%',
+          decimals: 2,
+          higherIsBetter: false,
+        },
+        failure_rate: {
+          label: 'Failure Rate (%)',
+          shortLabel: 'Failure',
+          group: 'Gameplay',
+          format: (v) => `${v.toFixed(2)}%`,
+          suffix: '%',
+          decimals: 2,
+          higherIsBetter: false,
+        },
+        completion_rate: {
+          label: 'Completion Rate (%)',
+          shortLabel: 'Completion',
+          group: 'Gameplay',
+          format: (v) => `${v.toFixed(2)}%`,
+          suffix: '%',
+          decimals: 2,
+          higherIsBetter: true,
+        },
+        level_start_per_user: {
+          label: 'Difficulty (Starts/User)',
+          shortLabel: 'Difficulty',
+          group: 'Gameplay',
+          format: (v) => v.toFixed(2),
+          suffix: '',
+          decimals: 2,
+          higherIsBetter: false,
+        },
+        play_time_sec: {
+          label: 'Play Time (Seconds)',
+          shortLabel: 'Play Time',
+          group: 'Gameplay',
+          format: (v) => formatTime(v),
+          suffix: 's',
+          decimals: 0,
+          higherIsBetter: false,
+        },
+        ad_ltv: {
+          label: 'Ad LTV ($)',
+          shortLabel: 'Ad LTV',
+          group: 'Ads/Monetization',
+          format: (v) => `$${v.toFixed(3)}`,
+          suffix: '$',
+          decimals: 3,
+          higherIsBetter: true,
+        },
+        banner_impr_user: {
+          label: 'Banner Impressions/User',
+          shortLabel: 'Banner Impr',
+          group: 'Ads/Monetization',
+          format: (v) => v.toFixed(2),
+          suffix: '',
+          decimals: 2,
+          higherIsBetter: null,
+        },
+        interstitial_impr_user: {
+          label: 'Interstitial Impressions/User',
+          shortLabel: 'Interstitial Impr',
+          group: 'Ads/Monetization',
+          format: (v) => v.toFixed(2),
+          suffix: '',
+          decimals: 2,
+          higherIsBetter: null,
+        },
+        rewarded_impr_user: {
+          label: 'Rewarded Impressions/User',
+          shortLabel: 'Rewarded Impr',
+          group: 'Ads/Monetization',
+          format: (v) => v.toFixed(2),
+          suffix: '',
+          decimals: 2,
+          higherIsBetter: true,
+        },
+        banner_ltv: {
+          label: 'Banner Ad LTV ($)',
+          shortLabel: 'Banner LTV',
+          group: 'Ads/Monetization',
+          format: (v) => `$${v.toFixed(3)}`,
+          suffix: '$',
+          decimals: 3,
+          higherIsBetter: true,
+        },
+        interstitial_ltv: {
+          label: 'Interstitial Ad LTV ($)',
+          shortLabel: 'Interstitial LTV',
+          group: 'Ads/Monetization',
+          format: (v) => `$${v.toFixed(3)}`,
+          suffix: '$',
+          decimals: 3,
+          higherIsBetter: true,
+        },
+        rewarded_ltv: {
+          label: 'Rewarded Ad LTV ($)',
+          shortLabel: 'Rewarded LTV',
+          group: 'Ads/Monetization',
+          format: (v) => `$${v.toFixed(3)}`,
+          suffix: '$',
+          decimals: 3,
+          higherIsBetter: true,
+        },
+      };
+
+      // Default axis assignment preserves original dashboard behaviour:
+      // X = Abandonment Rate, Y = Ad LTV
+      let currentXMetric = 'abandonment_rate';
+      let currentYMetric = 'ad_ltv';
+
+      // Dynamic thresholds (recomputed whenever metric/dataset changes)
+      let xThreshold = 3.0;
+      let yThreshold = 0.05;
+
       let activeTab = 'all';
       let chartInstance = null;
       let trendChartInstance = null;
@@ -3788,31 +3886,25 @@
         if (levelGroupFrom === null && levelGroupTo === null) return dataset;
         const from = levelGroupFrom !== null ? levelGroupFrom : -Infinity;
         const to = levelGroupTo !== null ? levelGroupTo : Infinity;
-        return dataset.filter(item => item.level >= from && item.level <= to);
+        return dataset.filter((item) => item.level >= from && item.level <= to);
       }
 
       function buildPresetButtons() {
-        const maxLevel = dataset.length > 0 ? Math.max(...dataset.map(d => d.level)) : 100;
-        const minLevel = dataset.length > 0 ? Math.min(...dataset.map(d => d.level)) : 1;
+        const maxLevel = dataset.length > 0 ? Math.max(...dataset.map((d) => d.level)) : 100;
+        const minLevel = dataset.length > 0 ? Math.min(...dataset.map((d) => d.level)) : 1;
         const span = maxLevel - minLevel + 1;
         const chunkSize = Math.ceil(span / 4);
 
-        const presets = [
-          { label: 'Tất cả', from: minLevel, to: maxLevel },
-        ];
-
-        // Create 4 equal chunks
+        const presets = [{ label: 'Tất cả', from: minLevel, to: maxLevel }];
         for (let i = 0; i < 4; i++) {
           const f = minLevel + i * chunkSize;
           const t = Math.min(minLevel + (i + 1) * chunkSize - 1, maxLevel);
-          if (f <= maxLevel) {
-            presets.push({ label: `Lv ${f}–${t}`, from: f, to: t });
-          }
+          if (f <= maxLevel) presets.push({ label: `Lv ${f}–${t}`, from: f, to: t });
         }
 
         const container = document.getElementById('filter-presets');
         container.innerHTML = '';
-        presets.forEach(p => {
+        presets.forEach((p) => {
           const btn = document.createElement('button');
           btn.className = 'preset-btn';
           btn.textContent = p.label;
@@ -3826,7 +3918,6 @@
           container.appendChild(btn);
         });
 
-        // Update input max
         document.getElementById('filter-from').max = maxLevel;
         document.getElementById('filter-to').max = maxLevel;
         document.getElementById('filter-to').value = maxLevel;
@@ -3837,8 +3928,8 @@
         const toVal = parseInt(document.getElementById('filter-to').value);
 
         if (!isNaN(fromVal) && !isNaN(toVal) && fromVal <= toVal) {
-          const maxLevel = dataset.length > 0 ? Math.max(...dataset.map(d => d.level)) : 100;
-          const minLevel = dataset.length > 0 ? Math.min(...dataset.map(d => d.level)) : 1;
+          const maxLevel = dataset.length > 0 ? Math.max(...dataset.map((d) => d.level)) : 100;
+          const minLevel = dataset.length > 0 ? Math.min(...dataset.map((d) => d.level)) : 1;
           if (fromVal === minLevel && toVal === maxLevel) {
             levelGroupFrom = null;
             levelGroupTo = null;
@@ -3853,18 +3944,22 @@
 
         updateFilterBadge();
         updatePresetButtonStates();
+        updateThresholdControls('x');
+        updateThresholdControls('y');
         updateDashboard();
       }
 
       function resetLevelGroupFilter() {
-        const maxLevel = dataset.length > 0 ? Math.max(...dataset.map(d => d.level)) : 100;
-        const minLevel = dataset.length > 0 ? Math.min(...dataset.map(d => d.level)) : 1;
+        const maxLevel = dataset.length > 0 ? Math.max(...dataset.map((d) => d.level)) : 100;
+        const minLevel = dataset.length > 0 ? Math.min(...dataset.map((d) => d.level)) : 1;
         document.getElementById('filter-from').value = minLevel;
         document.getElementById('filter-to').value = maxLevel;
         levelGroupFrom = null;
         levelGroupTo = null;
         updateFilterBadge();
         updatePresetButtonStates();
+        updateThresholdControls('x');
+        updateThresholdControls('y');
         updateDashboard();
       }
 
@@ -3886,54 +3981,191 @@
         const from = levelGroupFrom;
         const to = levelGroupTo;
         const btns = document.querySelectorAll('#filter-presets .preset-btn');
-        btns.forEach(btn => {
+        btns.forEach((btn) => {
           const bFrom = parseInt(btn.dataset.from);
           const bTo = parseInt(btn.dataset.to);
           const isAll = from === null && to === null;
-          if (isAll && btn.textContent === 'Tất cả') {
-            btn.classList.add('active');
-          } else if (bFrom === from && bTo === to) {
-            btn.classList.add('active');
-          } else {
-            btn.classList.remove('active');
-          }
+          if (isAll && btn.textContent === 'Tất cả') btn.classList.add('active');
+          else if (bFrom === from && bTo === to) btn.classList.add('active');
+          else btn.classList.remove('active');
         });
       }
 
-      // Initialize elements
-      document.getElementById('ltv-threshold').addEventListener('input', (e) => {
-        ltvThreshold = parseFloat(e.target.value);
-        document.getElementById('ltv-threshold-val').innerText = '$' + ltvThreshold.toFixed(3);
+      // ====================== DYNAMIC AXIS SELECTORS ======================
+      function populateAxisSelectors() {
+        const xSelect = document.getElementById('x-axis-metric-select');
+        const ySelect = document.getElementById('y-axis-metric-select');
+
+        const groups = {};
+        Object.keys(METRIC_CONFIGS).forEach((key) => {
+          const cfg = METRIC_CONFIGS[key];
+          if (!groups[cfg.group]) groups[cfg.group] = [];
+          groups[cfg.group].push(key);
+        });
+
+        [xSelect, ySelect].forEach((select) => {
+          select.innerHTML = '';
+          Object.keys(groups).forEach((groupName) => {
+            const optGroup = document.createElement('optgroup');
+            optGroup.label = groupName;
+            groups[groupName].forEach((key) => {
+              const opt = document.createElement('option');
+              opt.value = key;
+              opt.textContent = METRIC_CONFIGS[key].label;
+              optGroup.appendChild(opt);
+            });
+            select.appendChild(optGroup);
+          });
+        });
+
+        xSelect.value = currentXMetric;
+        ySelect.value = currentYMetric;
+      }
+
+      function getMetricRange(metricKey) {
+        const values = getFilteredDataset()
+          .map((item) => getMetricValue(item, metricKey))
+          .filter((v) => v !== null && v !== undefined && !isNaN(v));
+        if (values.length === 0) return { min: 0, max: 1 };
+        return { min: Math.min(...values), max: Math.max(...values) };
+      }
+
+      function computeNiceStep(range) {
+        if (range <= 0) return 1;
+        const raw = range / 100;
+        const magnitude = Math.pow(10, Math.floor(Math.log10(raw)));
+        const residual = raw / magnitude;
+        let step;
+        if (residual < 1.5) step = 1 * magnitude;
+        else if (residual < 3.5) step = 2 * magnitude;
+        else if (residual < 7.5) step = 5 * magnitude;
+        else step = 10 * magnitude;
+        return step;
+      }
+
+      function updateThresholdControls(axis) {
+        const metricKey = axis === 'x' ? currentXMetric : currentYMetric;
+        const cfg = METRIC_CONFIGS[metricKey];
+        const range = getMetricRange(metricKey);
+        const span = range.max - range.min || 1;
+        const step = computeNiceStep(span);
+
+        const slider = document.getElementById(axis + '-threshold');
+        const valSpan = document.getElementById(axis + '-threshold-val');
+        const labelSpan = document.getElementById(axis + '-threshold-label');
+
+        slider.min = range.min;
+        slider.max = range.max;
+        slider.step = step > 0 ? step : 0.01;
+
+        // Default the threshold to the midpoint of the metric's range when switching metrics
+        let defaultVal = range.min + span / 2;
+        if (axis === 'x') xThreshold = defaultVal;
+        else yThreshold = defaultVal;
+
+        slider.value = defaultVal;
+        labelSpan.textContent = `${cfg.shortLabel} Axis${cfg.suffix === '%' ? ' (%)' : cfg.suffix === '$' ? ' ($)' : ''}:`;
+        valSpan.textContent = cfg.format(defaultVal);
+      }
+
+      function onAxisMetricChange(axis) {
+        if (axis === 'x') {
+          currentXMetric = document.getElementById('x-axis-metric-select').value;
+        } else {
+          currentYMetric = document.getElementById('y-axis-metric-select').value;
+        }
+        updateThresholdControls(axis);
+        updateQuadrantLabels();
+        updateDashboard();
+      }
+
+      document.getElementById('x-threshold').addEventListener('input', (e) => {
+        xThreshold = parseFloat(e.target.value);
+        document.getElementById('x-threshold-val').textContent =
+          METRIC_CONFIGS[currentXMetric].format(xThreshold);
         updateDashboard();
       });
 
-      document.getElementById('abandon-threshold').addEventListener('input', (e) => {
-        abandonThreshold = parseFloat(e.target.value);
-        document.getElementById('abandon-threshold-val').innerText =
-          abandonThreshold.toFixed(1) + '%';
+      document.getElementById('y-threshold').addEventListener('input', (e) => {
+        yThreshold = parseFloat(e.target.value);
+        document.getElementById('y-threshold-val').textContent =
+          METRIC_CONFIGS[currentYMetric].format(yThreshold);
         updateDashboard();
       });
+
+      function getMetricValue(item, metricKey) {
+        const val = item[metricKey];
+        return val === null || val === undefined ? 0 : val;
+      }
+
+      // getQuadrant now compares the dynamically selected X/Y metrics against their thresholds.
+      // Quadrant semantics: Q1 = X-good & Y-good ("favourable" combo), mirroring the original
+      // Abandonment(low)/LTV(high) = Q1 layout. "Good" for X means below threshold (cost-like
+      // metrics) unless the metric is explicitly higherIsBetter, in which case "good" means above.
+      function isXGood(value) {
+        const cfg = METRIC_CONFIGS[currentXMetric];
+        if (cfg.higherIsBetter === true) return value >= xThreshold;
+        return value < xThreshold;
+      }
+      function isYGood(value) {
+        const cfg = METRIC_CONFIGS[currentYMetric];
+        if (cfg.higherIsBetter === false) return value < yThreshold;
+        return value >= yThreshold;
+      }
 
       function getQuadrant(levelData) {
-        const ltv = levelData.ad_ltv;
-        const abandon = levelData.abandonment_rate;
+        const xVal = getMetricValue(levelData, currentXMetric);
+        const yVal = getMetricValue(levelData, currentYMetric);
 
-        if (ltv >= ltvThreshold && abandon < abandonThreshold) return 'q1';
-        if (ltv >= ltvThreshold && abandon >= abandonThreshold) return 'q2';
-        if (ltv < ltvThreshold && abandon < abandonThreshold) return 'q3';
+        const xGood = isXGood(xVal);
+        const yGood = isYGood(yVal);
+
+        // Q1: both good | Q2: Y good, X bad | Q3: both bad | Q4: Y bad, X good
+        // This preserves original mapping where Y=LTV(good=high), X=Abandon(good=low):
+        // Q1 = low abandon + high ltv, Q2 = high abandon + high ltv, Q3 = low abandon + low ltv, Q4 = high abandon + low ltv
+        if (xGood && yGood) return 'q1';
+        if (!xGood && yGood) return 'q2';
+        if (xGood && !yGood) return 'q3';
         return 'q4';
+      }
+
+      function updateQuadrantLabels() {
+        const xCfg = METRIC_CONFIGS[currentXMetric];
+        const yCfg = METRIC_CONFIGS[currentYMetric];
+
+        document.getElementById('quadrant-chart-title').lastChild ? null : null;
+        const titleEl = document.getElementById('quadrant-chart-title');
+        titleEl.childNodes[titleEl.childNodes.length - 1].textContent =
+          ` Quadrant Analysis: ${xCfg.label} vs. ${yCfg.label}`;
+
+        const xGoodWord =
+          xCfg.higherIsBetter === true ? `High ${xCfg.shortLabel}` : `Low ${xCfg.shortLabel}`;
+        const xBadWord =
+          xCfg.higherIsBetter === true ? `Low ${xCfg.shortLabel}` : `High ${xCfg.shortLabel}`;
+        const yGoodWord =
+          yCfg.higherIsBetter === false ? `Low ${yCfg.shortLabel}` : `High ${yCfg.shortLabel}`;
+        const yBadWord =
+          yCfg.higherIsBetter === false ? `High ${yCfg.shortLabel}` : `Low ${yCfg.shortLabel}`;
+
+        document.getElementById('kpi-q1-title').textContent = `Q1: ${yGoodWord}, ${xGoodWord}`;
+        document.getElementById('kpi-q2-title').textContent = `Q2: ${yGoodWord}, ${xBadWord}`;
+        document.getElementById('kpi-q3-title').textContent = `Q3: ${yBadWord}, ${xGoodWord}`;
+        document.getElementById('kpi-q4-title').textContent = `Q4: ${yBadWord}, ${xBadWord}`;
+
+        document.getElementById('legend-q1-label').textContent = `Q1: ${yGoodWord}, ${xGoodWord}`;
+        document.getElementById('legend-q2-label').textContent = `Q2: ${yGoodWord}, ${xBadWord}`;
+        document.getElementById('legend-q3-label').textContent = `Q3: ${yBadWord}, ${xGoodWord}`;
+        document.getElementById('legend-q4-label').textContent = `Q4: ${yBadWord}, ${xBadWord}`;
       }
 
       function populateSelectors() {
         const selectA = document.getElementById('compare-a');
         const selectB = document.getElementById('compare-b');
 
-        // Keep the default average options
         selectA.innerHTML = '<option value="q1-avg">Average Q1 (Best Performing)</option>';
         selectB.innerHTML =
           '<option value="q4-avg" selected>Average Q4 (Needs Improvement)</option>';
 
-        // Add custom averages
         selectA.innerHTML += '<option value="q2-avg">Average Q2 (High LTV, High Abandon)</option>';
         selectA.innerHTML += '<option value="q3-avg">Average Q3 (Low LTV, Low Abandon)</option>';
 
@@ -3984,6 +4216,7 @@
           banner_ltv: sum('banner_ltv') / count,
           interstitial_ltv: sum('interstitial_ltv') / count,
           rewarded_ltv: sum('rewarded_ltv') / count,
+          failure_rate: sum('failure_rate') / count,
         };
       }
 
@@ -4061,10 +4294,10 @@
         ];
 
         let html = `
-                  <div class="comparison-header">${dataA.name || 'Level ' + dataA.level}</div>
-                  <div class="comparison-header">Metric</div>
-                  <div class="comparison-header">${dataB.name || 'Level ' + dataB.level}</div>
-              `;
+            <div class="comparison-header">${dataA.name || 'Level ' + dataA.level}</div>
+            <div class="comparison-header">Metric</div>
+            <div class="comparison-header">${dataB.name || 'Level ' + dataB.level}</div>
+        `;
 
         metrics.forEach((m) => {
           const valA = dataA[m.key];
@@ -4100,12 +4333,12 @@
           }
 
           html += `
-                      <div class="comparison-row">
-                          <div class="comparison-val ${classA}">${valA !== null ? m.format(valA) : 'N/A'}</div>
-                          <div class="comparison-label">${m.label}</div>
-                          <div class="comparison-val ${classB}">${valB !== null ? m.format(valB) : 'N/A'}</div>
-                      </div>
-                  `;
+                <div class="comparison-row">
+                    <div class="comparison-val ${classA}">${valA !== null ? m.format(valA) : 'N/A'}</div>
+                    <div class="comparison-label">${m.label}</div>
+                    <div class="comparison-val ${classB}">${valB !== null ? m.format(valB) : 'N/A'}</div>
+                </div>
+            `;
         });
 
         grid.innerHTML = html;
@@ -4122,7 +4355,6 @@
         const nameA = dataA.name || `Level ${dataA.level}`;
         const nameB = dataB.name || `Level ${dataB.level}`;
 
-        // Play Time Insight
         if (dataA.play_time_sec && dataB.play_time_sec) {
           const diffTime = Math.abs(dataA.play_time_sec - dataB.play_time_sec);
           const percentDiff = (diffTime / Math.min(dataA.play_time_sec, dataB.play_time_sec)) * 100;
@@ -4144,14 +4376,11 @@
           }
         }
 
-        // Interstitial Ads Placement Insight
         if (dataA.interstitial_impr_user && dataB.interstitial_impr_user) {
-          const diffInt = Math.abs(dataA.interstitial_impr_user - dataB.interstitial_impr_user);
           const higherInt =
             dataA.interstitial_impr_user > dataB.interstitial_impr_user ? dataA : dataB;
           const lowerInt =
             dataA.interstitial_impr_user > dataB.interstitial_impr_user ? dataB : dataA;
-
           const nameHigher = higherInt.name || `Level ${higherInt.level}`;
           const nameLower = lowerInt.name || `Level ${lowerInt.level}`;
 
@@ -4162,7 +4391,6 @@
           }
         }
 
-        // Rewarded Ad Engagement (Monetization factor)
         if (dataA.rewarded_impr_user && dataB.rewarded_impr_user) {
           const higherRew = dataA.rewarded_impr_user > dataB.rewarded_impr_user ? dataA : dataB;
           const lowerRew = dataA.rewarded_impr_user > dataB.rewarded_impr_user ? dataB : dataA;
@@ -4174,7 +4402,6 @@
           );
         }
 
-        // Difficulty insight
         if (dataA.level_start_per_user && dataB.level_start_per_user) {
           const diffStarts = Math.abs(dataA.level_start_per_user - dataB.level_start_per_user);
           if (diffStarts > 0.1) {
@@ -4189,7 +4416,6 @@
           }
         }
 
-        // Default fallback if no significant insights
         if (insights.length === 0) {
           insights.push(
             'Các chỉ số cơ bản của 2 nhóm khá tương đồng. Hãy phân tích chuyên sâu từng level cụ thể để tìm nguyên nhân đặc thù.'
@@ -4198,42 +4424,46 @@
 
         list.innerHTML = insights.map((i) => `<li>${i}</li>`).join('');
 
-        // Set Recommendations based on who has higher abandonment / lower LTV
         let target = null;
         let targetName = '';
-        if (dataB.abandonment_rate > abandonThreshold && dataB.ad_ltv < ltvThreshold) {
+        const dataBxVal = getMetricValue(dataB, currentXMetric);
+        const dataByVal = getMetricValue(dataB, currentYMetric);
+        const dataAxVal = getMetricValue(dataA, currentXMetric);
+        const dataAyVal = getMetricValue(dataA, currentYMetric);
+
+        if (!isXGood(dataBxVal) && !isYGood(dataByVal)) {
           target = dataB;
           targetName = nameB;
-        } else if (dataA.abandonment_rate > abandonThreshold && dataA.ad_ltv < ltvThreshold) {
+        } else if (!isXGood(dataAxVal) && !isYGood(dataAyVal)) {
           target = dataA;
           targetName = nameA;
         }
 
         if (target) {
           recommendations = `
-                      <h4>
-                          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
-                          Hướng cải thiện cho ${targetName}
-                      </h4>
-                      <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 0.75rem;">
-                          Level này thuộc <strong>Góc phần tư thứ 4 (Tệ nhất)</strong>: Người dùng bỏ cuộc nhiều nhưng doanh thu mang lại rất thấp. Đề xuất:
-                      </p>
-                      <ul class="insight-list" style="font-size: 0.85rem;">
-                          <li><strong>Giảm thời gian chơi:</strong> Nếu thời gian chơi quá dài (> 5-6 phút), hãy giảm độ phức tạp hoặc số nút thắt/sợi len cần gỡ để người chơi hoàn thành nhanh hơn.</li>
-                          <li><strong>Cân đối quảng cáo Interstitial:</strong> Giảm tần suất hiện quảng cáo kẽ ép buộc (no-skip) khi người chơi đang loay hoay giải đố để giảm ức chế.</li>
-                          <li><strong>Tăng giá trị Rewarded Ads:</strong> Tăng phần thưởng (hint, booster) để khuyến khích người chơi xem quảng cáo tự nguyện khi gặp màn khó, tăng LTV.</li>
-                      </ul>
-                  `;
+                <h4>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                    Hướng cải thiện cho ${targetName}
+                </h4>
+                <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 0.75rem;">
+                    Level này thuộc <strong>Góc phần tư thứ 4 (Tệ nhất)</strong> trên hai trục đang chọn. Đề xuất:
+                </p>
+                <ul class="insight-list" style="font-size: 0.85rem;">
+                    <li><strong>Giảm thời gian chơi:</strong> Nếu thời gian chơi quá dài (> 5-6 phút), hãy giảm độ phức tạp hoặc số nút thắt/sợi len cần gỡ để người chơi hoàn thành nhanh hơn.</li>
+                    <li><strong>Cân đối quảng cáo Interstitial:</strong> Giảm tần suất hiện quảng cáo kẽ ép buộc (no-skip) khi người chơi đang loay hoay giải đố để giảm ức chế.</li>
+                    <li><strong>Tăng giá trị Rewarded Ads:</strong> Tăng phần thưởng (hint, booster) để khuyến khích người chơi xem quảng cáo tự nguyện khi gặp màn khó, tăng LTV.</li>
+                </ul>
+            `;
         } else {
           recommendations = `
-                      <h4>
-                          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-                          Màn chơi đạt chuẩn tối ưu
-                      </h4>
-                      <p style="font-size: 0.9rem; color: var(--text-secondary);">
-                          Cả hai level/nhóm so sánh đều không thuộc nhóm báo động đỏ (Q4). Hãy tiếp tục duy trì cấu trúc gameplay, độ khó và tần suất xuất hiện quảng cáo của các màn chơi này làm benchmark chuẩn cho các level mới.
-                      </p>
-                  `;
+                <h4>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                    Màn chơi đạt chuẩn tối ưu
+                </h4>
+                <p style="font-size: 0.9rem; color: var(--text-secondary);">
+                    Cả hai level/nhóm so sánh đều không thuộc nhóm báo động đỏ (Q4). Hãy tiếp tục duy trì cấu trúc gameplay, độ khó và tần suất xuất hiện quảng cáo của các màn chơi này làm benchmark chuẩn cho các level mới.
+                </p>
+            `;
         }
 
         recBox.innerHTML = recommendations;
@@ -4258,44 +4488,26 @@
         const filtered = getFilteredDataset().filter((item) => {
           const matchesSearch = query === '' || item.level.toString().includes(query);
           if (!matchesSearch) return false;
-
           const q = getQuadrant(item);
           if (activeTab === 'all') return true;
           return q === activeTab;
         });
 
-        // Sort levels numerically to show correct progression trend
         const sortedFiltered = [...filtered].sort((a, b) => a.level - b.level);
 
         const ctx = document.getElementById('clusterTrendChart').getContext('2d');
-
-        if (trendChartInstance) {
-          trendChartInstance.destroy();
-        }
+        if (trendChartInstance) trendChartInstance.destroy();
 
         const labels = sortedFiltered.map((item) => `Lvl ${item.level}`);
-        const ltvData = sortedFiltered.map((item) => item.ad_ltv);
-        const abandonData = sortedFiltered.map((item) => item.abandonment_rate);
+        const xData = sortedFiltered.map((item) => getMetricValue(item, currentXMetric));
+        const yData = sortedFiltered.map((item) => getMetricValue(item, currentYMetric));
         const overlayData = sortedFiltered.map((item) => {
           const val = item[overlayKey];
           return val === null || val === undefined ? 0 : val;
         });
 
-        let clusterColor = '#6366f1';
-        let clusterName = 'All Levels';
-        if (activeTab === 'q1') {
-          clusterColor = '#10b981';
-          clusterName = 'Q1: Good';
-        } else if (activeTab === 'q2') {
-          clusterColor = '#3b82f6';
-          clusterName = 'Q2: Hard/Profitable';
-        } else if (activeTab === 'q3') {
-          clusterColor = '#eab308';
-          clusterName = 'Q3: Easy/Low-mon';
-        } else if (activeTab === 'q4') {
-          clusterColor = '#ef4444';
-          clusterName = 'Q4: Problematic';
-        }
+        const xCfg = METRIC_CONFIGS[currentXMetric];
+        const yCfg = METRIC_CONFIGS[currentYMetric];
 
         trendChartInstance = new Chart(ctx, {
           type: 'line',
@@ -4303,8 +4515,8 @@
             labels: labels,
             datasets: [
               {
-                label: 'Ad LTV ($)',
-                data: ltvData,
+                label: yCfg.label,
+                data: yData,
                 borderColor: '#3b82f6',
                 backgroundColor: 'rgba(59, 130, 246, 0.1)',
                 borderWidth: 2.5,
@@ -4312,16 +4524,16 @@
                 pointRadius: sortedFiltered.length > 50 ? 2 : 4,
                 pointHoverRadius: 6,
                 tension: 0.15,
-                yAxisID: 'yLtv',
+                yAxisID: 'yMetricY',
               },
               {
                 type: 'bar',
-                label: 'Abandonment Rate (%)',
-                data: abandonData,
+                label: xCfg.label,
+                data: xData,
                 borderColor: 'rgba(239, 68, 68, 0.6)',
                 backgroundColor: 'rgba(239, 68, 68, 0.15)',
                 borderWidth: 1.5,
-                yAxisID: 'yAbandon',
+                yAxisID: 'yMetricX',
                 barPercentage: 0.6,
                 categoryPercentage: 0.8,
               },
@@ -4342,15 +4554,10 @@
           options: {
             responsive: true,
             maintainAspectRatio: false,
-            interaction: {
-              mode: 'index',
-              intersect: false,
-            },
+            interaction: { mode: 'index', intersect: false },
             scales: {
               x: {
-                grid: {
-                  color: 'rgba(255, 255, 255, 0.05)',
-                },
+                grid: { color: 'rgba(255, 255, 255, 0.05)' },
                 ticks: {
                   color: '#94a3b8',
                   font: { family: 'Outfit', size: 10 },
@@ -4358,37 +4565,29 @@
                   minRotation: 0,
                 },
               },
-              yLtv: {
+              yMetricY: {
                 type: 'linear',
                 position: 'left',
                 title: {
                   display: true,
-                  text: 'Ad LTV ($)',
+                  text: yCfg.label,
                   color: '#3b82f6',
                   font: { family: 'Outfit', size: 11, weight: '600' },
                 },
-                grid: {
-                  color: 'rgba(255, 255, 255, 0.05)',
-                },
-                ticks: {
-                  color: '#94a3b8',
-                },
+                grid: { color: 'rgba(255, 255, 255, 0.05)' },
+                ticks: { color: '#94a3b8' },
               },
-              yAbandon: {
+              yMetricX: {
                 type: 'linear',
                 position: 'right',
                 title: {
                   display: true,
-                  text: 'Abandonment Rate (%)',
+                  text: xCfg.label,
                   color: '#ef4444',
                   font: { family: 'Outfit', size: 11, weight: '600' },
                 },
-                grid: {
-                  drawOnChartArea: false,
-                },
-                ticks: {
-                  color: '#94a3b8',
-                },
+                grid: { drawOnChartArea: false },
+                ticks: { color: '#94a3b8' },
               },
               yOverlay: {
                 type: 'linear',
@@ -4399,20 +4598,13 @@
                   color: '#f97316',
                   font: { family: 'Outfit', size: 11, weight: '600' },
                 },
-                grid: {
-                  drawOnChartArea: false,
-                },
-                ticks: {
-                  color: '#94a3b8',
-                },
+                grid: { drawOnChartArea: false },
+                ticks: { color: '#94a3b8' },
               },
             },
             plugins: {
               legend: {
-                labels: {
-                  color: '#f8fafc',
-                  font: { family: 'Plus Jakarta Sans', size: 11 },
-                },
+                labels: { color: '#f8fafc', font: { family: 'Plus Jakarta Sans', size: 11 } },
               },
               tooltip: {
                 callbacks: {
@@ -4424,13 +4616,9 @@
                   label: function (context) {
                     const datasetLabel = context.dataset.label;
                     const value = context.parsed.y;
-                    if (datasetLabel.includes('LTV')) {
-                      return `Ad LTV: $${value.toFixed(3)}`;
-                    } else if (datasetLabel.includes('Abandonment')) {
-                      return `Abandonment Rate: ${value.toFixed(2)}%`;
-                    } else {
-                      return `${datasetLabel}: ${value.toFixed(2)}`;
-                    }
+                    if (datasetLabel === yCfg.label) return `${yCfg.label}: ${yCfg.format(value)}`;
+                    if (datasetLabel === xCfg.label) return `${xCfg.label}: ${xCfg.format(value)}`;
+                    return `${datasetLabel}: ${value.toFixed(2)}`;
                   },
                   afterBody: function (context) {
                     const index = context[0].dataIndex;
@@ -4455,8 +4643,6 @@
                   const selector = document.getElementById('compare-a');
                   selector.value = item.level;
                   runComparison();
-
-                  // Scroll to comparison section smoothly
                   document.getElementById('comparison-grid').scrollIntoView({ behavior: 'smooth' });
                 }
               }
@@ -4471,7 +4657,6 @@
       }
 
       function updateDashboard() {
-        // Recalculate counts using filtered dataset
         const filteredData = getFilteredDataset();
         let counts = { q1: 0, q2: 0, q3: 0, q4: 0 };
         filteredData.forEach((item) => {
@@ -4483,33 +4668,27 @@
         document.getElementById('kpi-q3-count').innerText = counts.q3;
         document.getElementById('kpi-q4-count').innerText = counts.q4;
 
-        // Update Level list
         filterLevels();
-
-        // Run comparison
         runComparison();
-
-        // Render Chart
         renderChart();
-
-        // Render Linear Level Distribution Chart
         renderLinearLevelChart();
       }
 
       function renderChart() {
         const ctx = document.getElementById('quadrantChart').getContext('2d');
 
-        // Build datasets using filtered dataset
-        const dataQ1 = [];
-        const dataQ2 = [];
-        const dataQ3 = [];
-        const dataQ4 = [];
+        const dataQ1 = [],
+          dataQ2 = [],
+          dataQ3 = [],
+          dataQ4 = [];
+        const xCfg = METRIC_CONFIGS[currentXMetric];
+        const yCfg = METRIC_CONFIGS[currentYMetric];
 
         getFilteredDataset().forEach((item) => {
           const q = getQuadrant(item);
           const pt = {
-            x: item.abandonment_rate,
-            y: item.ad_ltv,
+            x: getMetricValue(item, currentXMetric),
+            y: getMetricValue(item, currentYMetric),
             level: item.level,
             raw: item,
           };
@@ -4519,16 +4698,27 @@
           else dataQ4.push(pt);
         });
 
-        if (chartInstance) {
-          chartInstance.destroy();
-        }
+        if (chartInstance) chartInstance.destroy();
+
+        const q1Label = document.getElementById('legend-q1-label')
+          ? document.getElementById('legend-q1-label').textContent
+          : 'Q1';
+        const q2Label = document.getElementById('legend-q2-label')
+          ? document.getElementById('legend-q2-label').textContent
+          : 'Q2';
+        const q3Label = document.getElementById('legend-q3-label')
+          ? document.getElementById('legend-q3-label').textContent
+          : 'Q3';
+        const q4Label = document.getElementById('legend-q4-label')
+          ? document.getElementById('legend-q4-label').textContent
+          : 'Q4';
 
         chartInstance = new Chart(ctx, {
           type: 'scatter',
           data: {
             datasets: [
               {
-                label: 'Q1: Good (High LTV, Low Abandon)',
+                label: q1Label,
                 data: dataQ1,
                 backgroundColor: 'rgba(16, 185, 129, 0.85)',
                 borderColor: '#10b981',
@@ -4537,7 +4727,7 @@
                 pointHoverRadius: 8,
               },
               {
-                label: 'Q2: Hard/Profitable (High LTV, High Abandon)',
+                label: q2Label,
                 data: dataQ2,
                 backgroundColor: 'rgba(59, 130, 246, 0.85)',
                 borderColor: '#3b82f6',
@@ -4546,7 +4736,7 @@
                 pointHoverRadius: 8,
               },
               {
-                label: 'Q3: Easy/Low-mon (Low LTV, Low Abandon)',
+                label: q3Label,
                 data: dataQ3,
                 backgroundColor: 'rgba(234, 179, 8, 0.85)',
                 borderColor: '#eab308',
@@ -4555,7 +4745,7 @@
                 pointHoverRadius: 8,
               },
               {
-                label: 'Q4: Problematic (Low LTV, High Abandon)',
+                label: q4Label,
                 data: dataQ4,
                 backgroundColor: 'rgba(239, 68, 68, 0.85)',
                 borderColor: '#ef4444',
@@ -4572,38 +4762,27 @@
               x: {
                 title: {
                   display: true,
-                  text: 'Abandonment Rate (%)',
+                  text: xCfg.label,
                   color: '#f8fafc',
                   font: { family: 'Outfit', size: 12, weight: '600' },
                 },
-                grid: {
-                  color: 'rgba(255, 255, 255, 0.05)',
-                },
-                ticks: {
-                  color: '#94a3b8',
-                },
+                grid: { color: 'rgba(255, 255, 255, 0.05)' },
+                ticks: { color: '#94a3b8' },
               },
               y: {
                 title: {
                   display: true,
-                  text: 'Ad LTV ($)',
+                  text: yCfg.label,
                   color: '#f8fafc',
                   font: { family: 'Outfit', size: 12, weight: '600' },
                 },
-                grid: {
-                  color: 'rgba(255, 255, 255, 0.05)',
-                },
-                ticks: {
-                  color: '#94a3b8',
-                },
+                grid: { color: 'rgba(255, 255, 255, 0.05)' },
+                ticks: { color: '#94a3b8' },
               },
             },
             plugins: {
               legend: {
-                labels: {
-                  color: '#f8fafc',
-                  font: { family: 'Plus Jakarta Sans', size: 11 },
-                },
+                labels: { color: '#f8fafc', font: { family: 'Plus Jakarta Sans', size: 11 } },
               },
               tooltip: {
                 callbacks: {
@@ -4611,8 +4790,8 @@
                     const raw = context.raw.raw;
                     return [
                       `Level ${raw.level}`,
-                      `Abandonment Rate: ${raw.abandonment_rate.toFixed(2)}%`,
-                      `Ad LTV: $${raw.ad_ltv.toFixed(3)}`,
+                      `${xCfg.label}: ${xCfg.format(getMetricValue(raw, currentXMetric))}`,
+                      `${yCfg.label}: ${yCfg.format(getMetricValue(raw, currentYMetric))}`,
                       `Play Time: ${raw.play_time_raw || 'N/A'}`,
                       `Starts/User: ${raw.level_start_per_user.toFixed(2)}`,
                     ];
@@ -4629,21 +4808,19 @@
                   ctx,
                   scales: { x, y },
                 } = chart;
-                const xVal = x.getPixelForValue(abandonThreshold);
-                const yVal = y.getPixelForValue(ltvThreshold);
+                const xVal = x.getPixelForValue(xThreshold);
+                const yVal = y.getPixelForValue(yThreshold);
 
                 ctx.save();
                 ctx.strokeStyle = 'rgba(255, 255, 255, 0.2)';
                 ctx.lineWidth = 1.5;
                 ctx.setLineDash([6, 4]);
 
-                // Vertical line
                 ctx.beginPath();
                 ctx.moveTo(xVal, y.top);
                 ctx.lineTo(xVal, y.bottom);
                 ctx.stroke();
 
-                // Horizontal line
                 ctx.beginPath();
                 ctx.moveTo(x.left, yVal);
                 ctx.lineTo(x.right, yVal);
@@ -4669,49 +4846,6 @@
         }
       }
 
-      function parseFloatVal(val) {
-        if (val === null || val === undefined) return 0;
-        val = val
-          .toString()
-          .replace(/[\$\%,]/g, '')
-          .trim();
-        const parsed = parseFloat(val);
-        return isNaN(parsed) ? 0 : parsed;
-      }
-
-      function parseTime(timeStr) {
-        if (!timeStr || timeStr.trim() === '') return null;
-        timeStr = timeStr.trim().toLowerCase();
-        let hours = 0,
-          minutes = 0,
-          seconds = 0;
-        let hMatch = timeStr.match(/(\d+)\s*h/);
-        let mMatch = timeStr.match(/(\d+)\s*m/);
-        let sMatch = timeStr.match(/(\d+)\s*s/);
-
-        if (hMatch) hours = parseInt(hMatch[1]);
-        if (mMatch) minutes = parseInt(mMatch[1]);
-        if (sMatch) seconds = parseInt(sMatch[1]);
-
-        if (!hMatch && !mMatch && !sMatch) {
-          if (timeStr.includes(':')) {
-            let parts = timeStr.split(':').map(Number);
-            if (parts.length === 3) {
-              hours = parts[0];
-              minutes = parts[1];
-              seconds = parts[2];
-            } else if (parts.length === 2) {
-              minutes = parts[0];
-              seconds = parts[1];
-            }
-          } else {
-            let val = parseInt(timeStr);
-            if (!isNaN(val)) seconds = val;
-          }
-        }
-        return hours * 3600 + minutes * 60 + seconds;
-      }
-
       function processUploadedCSVs() {
         const playFile = document.getElementById('play-csv-input').files[0];
         const adFile = document.getElementById('ad-csv-input').files[0];
@@ -4722,58 +4856,40 @@
           return;
         }
 
-        let playData = null;
-        let adData = null;
-        let failData = null;
+        let playData = null,
+          adData = null,
+          failData = null;
 
         Papa.parse(playFile, {
           header: true,
           skipEmptyLines: true,
-          complete: function (results) {
+          complete: (results) => {
             playData = results.data;
             checkAndMerge();
           },
-          error: function (err) {
-            alert('Error parsing Level Play CSV: ' + err.message);
-          },
+          error: (err) => alert('Error parsing Level Play CSV: ' + err.message),
         });
-
         Papa.parse(adFile, {
           header: true,
           skipEmptyLines: true,
-          complete: function (results) {
+          complete: (results) => {
             adData = results.data;
             checkAndMerge();
           },
-          error: function (err) {
-            alert('Error parsing Ad LTV CSV: ' + err.message);
-          },
+          error: (err) => alert('Error parsing Ad LTV CSV: ' + err.message),
         });
-
         Papa.parse(failFile, {
           header: true,
           skipEmptyLines: true,
-          complete: function (results) {
+          complete: (results) => {
             failData = results.data;
             checkAndMerge();
           },
-          error: function (err) {
-            alert('Error parsing Level Fail CSV: ' + err.message);
-          },
+          error: (err) => alert('Error parsing Level Fail CSV: ' + err.message),
         });
 
         function checkAndMerge() {
           if (!playData || !adData || !failData) return;
-
-          // Create maps for quick lookup
-          const playMap = {};
-          playData.forEach((row) => {
-            const lvlKey = Object.keys(row).find((k) => k.trim().toLowerCase() === 'level');
-            if (!lvlKey) return;
-            const lvl = parseInt(row[lvlKey]);
-            if (isNaN(lvl)) return;
-            playMap[lvl] = row;
-          });
 
           const adMap = {};
           adData.forEach((row) => {
@@ -4803,7 +4919,6 @@
 
           const mergedList = [];
 
-          // Merge all data using Play CSV as base
           playData.forEach((playRow) => {
             const lvlKey = Object.keys(playRow).find((k) => k.trim().toLowerCase() === 'level');
             if (!lvlKey) return;
@@ -4813,7 +4928,6 @@
             const adRow = adMap[lvl] || {};
             const failRow = failMap[lvl] || {};
 
-            // Parse AD metrics
             const ad_ltv = parseFloatVal(getValue(adRow, 'Ad LTV'));
             const acc_ad_ltv = parseFloatVal(getValue(adRow, 'Accumulated Ad LTV'));
             const banner_ltv = parseFloatVal(getValue(adRow, 'Banner Ad LTV'));
@@ -4830,7 +4944,6 @@
               getValue(adRow, 'Rewarded Impressions per User')
             );
 
-            // Parse PLAY metrics
             const abandonment_rate = parseFloatVal(getValue(playRow, 'Abandonment Rate'));
             const remain_rate = parseFloatVal(getValue(playRow, 'Remain Rate'));
             const completion_rate = parseFloatVal(
@@ -4843,14 +4956,11 @@
 
             const play_time_raw = getValue(playRow, 'Play Time');
             const play_time_sec = parseTime(play_time_raw);
-
             const win_time_raw = getValue(playRow, 'Win Time');
             const win_time_sec = parseTime(win_time_raw);
-
             const lose_time_raw = getValue(playRow, 'Lose Time');
             const lose_time_sec = parseTime(lose_time_raw);
 
-            // Parse FAIL metrics
             const failure_rate_str = getValue(failRow, 'Failure rate');
             const failure_rate = failure_rate_str
               ? parseFloat(failure_rate_str.replace('%', ''))
@@ -4888,16 +4998,16 @@
             return;
           }
 
-          // Sort numerically by level
           mergedList.sort((a, b) => a.level - b.level);
 
-          // Clear and repopulate dataset
           dataset.length = 0;
           mergedList.forEach((item) => dataset.push(item));
 
           populateSelectors();
           buildPresetButtons();
           resetLevelGroupFilter();
+          updateThresholdControls('x');
+          updateThresholdControls('y');
           updateDashboard();
 
           document.getElementById('data-size-badge').innerText =
@@ -4911,31 +5021,7 @@
       let linearChartInstance = null;
 
       function getMetricLabel(metricKey) {
-        const labels = {
-          failure_rate: 'Failure Rate (%)',
-          abandonment_rate: 'Abandonment Rate (%)',
-          completion_rate: 'Completion Rate (%)',
-          level_start_per_user: 'Difficulty (Starts/User)',
-          play_time_sec: 'Play Time (Seconds)',
-          ad_ltv: 'Ad LTV ($)',
-          banner_impr_user: 'Banner Impressions/User',
-          interstitial_impr_user: 'Interstitial Impressions/User',
-          rewarded_impr_user: 'Rewarded Impressions/User',
-        };
-        return labels[metricKey] || metricKey;
-      }
-
-      function getMetricValue(item, metricKey) {
-        if (metricKey === 'failure_rate') return item.failure_rate || 0;
-        if (metricKey === 'abandonment_rate') return item.abandonment_rate || 0;
-        if (metricKey === 'completion_rate') return item.completion_rate || 0;
-        if (metricKey === 'level_start_per_user') return item.level_start_per_user || 0;
-        if (metricKey === 'play_time_sec') return item.play_time_sec || 0;
-        if (metricKey === 'ad_ltv') return item.ad_ltv || 0;
-        if (metricKey === 'banner_impr_user') return item.banner_impr_user || 0;
-        if (metricKey === 'interstitial_impr_user') return item.interstitial_impr_user || 0;
-        if (metricKey === 'rewarded_impr_user') return item.rewarded_impr_user || 0;
-        return 0;
+        return METRIC_CONFIGS[metricKey] ? METRIC_CONFIGS[metricKey].label : metricKey;
       }
 
       function renderLinearLevelChart() {
@@ -4945,18 +5031,15 @@
         const barMetric = barMetricSelect ? barMetricSelect.value : 'failure_rate';
         const lineMetric = lineMetricSelect ? lineMetricSelect.value : 'play_time_sec';
 
-        // Prepare data sorted by level, using filtered dataset
         const sortedData = [...getFilteredDataset()].sort((a, b) => a.level - b.level);
-
         const labels = sortedData.map((item) => `L${item.level}`);
 
-        // Build background colors based on quadrant (for bars)
         const barBackgroundColors = sortedData.map((item) => {
           const q = getQuadrant(item);
-          if (q === 'q1') return 'rgba(16, 185, 129, 0.7)'; // Green
-          if (q === 'q2') return 'rgba(59, 130, 246, 0.7)'; // Blue
-          if (q === 'q3') return 'rgba(234, 179, 8, 0.7)'; // Yellow
-          return 'rgba(239, 68, 68, 0.7)'; // Red - Q4
+          if (q === 'q1') return 'rgba(16, 185, 129, 0.7)';
+          if (q === 'q2') return 'rgba(59, 130, 246, 0.7)';
+          if (q === 'q3') return 'rgba(234, 179, 8, 0.7)';
+          return 'rgba(239, 68, 68, 0.7)';
         });
 
         const barBorderColors = sortedData.map((item) => {
@@ -4967,20 +5050,14 @@
           return '#ef4444';
         });
 
-        // Get data for bars
         const barData = sortedData.map((item) => getMetricValue(item, barMetric));
-
-        // Get data for line
         const lineData = sortedData.map((item) => getMetricValue(item, lineMetric));
 
         const barLabel = getMetricLabel(barMetric);
         const lineLabel = getMetricLabel(lineMetric);
 
         const ctx = document.getElementById('linearLevelChart').getContext('2d');
-
-        if (linearChartInstance) {
-          linearChartInstance.destroy();
-        }
+        if (linearChartInstance) linearChartInstance.destroy();
 
         linearChartInstance = new Chart(ctx, {
           type: 'bar',
@@ -5020,10 +5097,7 @@
           options: {
             responsive: true,
             maintainAspectRatio: false,
-            interaction: {
-              mode: 'index',
-              intersect: false,
-            },
+            interaction: { mode: 'index', intersect: false },
             scales: {
               x: {
                 title: {
@@ -5032,9 +5106,7 @@
                   color: '#f8fafc',
                   font: { family: 'Outfit', size: 12, weight: '600' },
                 },
-                grid: {
-                  display: false,
-                },
+                grid: { display: false },
                 ticks: {
                   color: '#94a3b8',
                   font: { size: 10 },
@@ -5052,12 +5124,8 @@
                   color: '#3b82f6',
                   font: { family: 'Outfit', size: 11, weight: '600' },
                 },
-                grid: {
-                  color: 'rgba(59, 130, 246, 0.1)',
-                },
-                ticks: {
-                  color: '#94a3b8',
-                },
+                grid: { color: 'rgba(59, 130, 246, 0.1)' },
+                ticks: { color: '#94a3b8' },
                 beginAtZero: true,
               },
               y1: {
@@ -5069,12 +5137,8 @@
                   color: '#f97316',
                   font: { family: 'Outfit', size: 11, weight: '600' },
                 },
-                grid: {
-                  drawOnChartArea: false,
-                },
-                ticks: {
-                  color: '#94a3b8',
-                },
+                grid: { drawOnChartArea: false },
+                ticks: { color: '#94a3b8' },
               },
             },
             plugins: {
@@ -5102,11 +5166,13 @@
                   label: function (context) {
                     const item = sortedData[context.dataIndex];
                     const q = getQuadrant(item);
+                    const xCfg = METRIC_CONFIGS[currentXMetric];
+                    const yCfg = METRIC_CONFIGS[currentYMetric];
                     const quadrantLabel = {
-                      q1: 'Q1 (High LTV, Low Abandon)',
-                      q2: 'Q2 (High LTV, High Abandon)',
-                      q3: 'Q3 (Low LTV, Low Abandon)',
-                      q4: 'Q4 (Low LTV, High Abandon)',
+                      q1: document.getElementById('legend-q1-label').textContent,
+                      q2: document.getElementById('legend-q2-label').textContent,
+                      q3: document.getElementById('legend-q3-label').textContent,
+                      q4: document.getElementById('legend-q4-label').textContent,
                     }[q];
 
                     const baseInfo = [
@@ -5114,20 +5180,17 @@
                       `Quadrant: ${quadrantLabel}`,
                     ];
 
-                    // Add extra details
                     if (context.datasetIndex === 0) {
-                      baseInfo.push(`Ad LTV: $${item.ad_ltv.toFixed(4)}`);
-                      baseInfo.push(`Abandonment: ${item.abandonment_rate.toFixed(2)}%`);
-                      baseInfo.push(`Failure Rate: ${item.failure_rate.toFixed(2)}%`);
+                      baseInfo.push(
+                        `${xCfg.label}: ${xCfg.format(getMetricValue(item, currentXMetric))}`
+                      );
+                      baseInfo.push(
+                        `${yCfg.label}: ${yCfg.format(getMetricValue(item, currentYMetric))}`
+                      );
                       baseInfo.push(`Completion: ${item.completion_rate.toFixed(2)}%`);
                     }
 
                     return baseInfo;
-                  },
-                  afterLabel: function (context) {
-                    if (context.datasetIndex === 0) {
-                      return '';
-                    }
                   },
                 },
               },
@@ -5137,10 +5200,14 @@
       }
 
       // Initialize dashboard
+      populateAxisSelectors();
       populateSelectors();
       buildPresetButtons();
       updateFilterBadge();
       updatePresetButtonStates();
+      updateThresholdControls('x');
+      updateThresholdControls('y');
+      updateQuadrantLabels();
       updateDashboard();
       renderLinearLevelChart();
     </script>
