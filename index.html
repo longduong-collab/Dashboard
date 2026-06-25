@@ -14,7 +14,7 @@
     <!-- Chart.js CDN -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <!-- PapaParse CDN -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/papaparse/5.4.1/papaparse.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
     <style>
       :root {
         --bg-base: #0b0f19;
@@ -923,6 +923,10 @@
               <label for="y-threshold" id="y-threshold-label">Y Axis:</label>
               <input type="range" id="y-threshold" class="slider-input" />
               <span id="y-threshold-val"></span>
+            </div>
+            <div class="control-group" style="margin-left: auto; position: relative;">
+              <svg style="position: absolute; left: 8px; top: 50%; transform: translateY(-50%); color: var(--text-muted);" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+              <input type="number" id="quadrant-level-search" class="search-box" style="width: 140px; padding: 0.3rem 0.5rem 0.3rem 1.8rem; font-size: 0.85rem;" placeholder="Tìm Level..." oninput="highlightSearchedLevel()" />
             </div>
           </div>
           <div class="chart-container">
@@ -4713,6 +4717,29 @@
           ? document.getElementById('legend-q4-label').textContent
           : 'Q4';
 
+        const getBgColor = (ctx, baseColor) => {
+          const searchInput = document.getElementById('quadrant-level-search');
+          const searchedLevel = searchInput && searchInput.value ? parseInt(searchInput.value) : null;
+          if (searchedLevel && ctx.raw && ctx.raw.level === searchedLevel) return '#ffffff';
+          if (searchedLevel && ctx.raw && ctx.raw.level !== searchedLevel) return baseColor.replace('0.85)', '0.15)');
+          return baseColor;
+        };
+
+        const getBorderColor = (ctx, baseColor) => {
+          const searchInput = document.getElementById('quadrant-level-search');
+          const searchedLevel = searchInput && searchInput.value ? parseInt(searchInput.value) : null;
+          if (searchedLevel && ctx.raw && ctx.raw.level === searchedLevel) return '#ffffff';
+          if (searchedLevel && ctx.raw && ctx.raw.level !== searchedLevel) return baseColor + '30';
+          return baseColor;
+        };
+
+        const getRadius = (ctx, defaultRadius) => {
+          const searchInput = document.getElementById('quadrant-level-search');
+          const searchedLevel = searchInput && searchInput.value ? parseInt(searchInput.value) : null;
+          if (searchedLevel && ctx.raw && ctx.raw.level === searchedLevel) return 10;
+          return defaultRadius;
+        };
+
         chartInstance = new Chart(ctx, {
           type: 'scatter',
           data: {
@@ -4720,37 +4747,37 @@
               {
                 label: q1Label,
                 data: dataQ1,
-                backgroundColor: 'rgba(16, 185, 129, 0.85)',
-                borderColor: '#10b981',
-                borderWidth: 1,
-                pointRadius: 6,
+                backgroundColor: (ctx) => getBgColor(ctx, 'rgba(16, 185, 129, 0.85)'),
+                borderColor: (ctx) => getBorderColor(ctx, '#10b981'),
+                borderWidth: (ctx) => getRadius(ctx, 6) === 10 ? 2 : 1,
+                pointRadius: (ctx) => getRadius(ctx, 6),
                 pointHoverRadius: 8,
               },
               {
                 label: q2Label,
                 data: dataQ2,
-                backgroundColor: 'rgba(59, 130, 246, 0.85)',
-                borderColor: '#3b82f6',
-                borderWidth: 1,
-                pointRadius: 6,
+                backgroundColor: (ctx) => getBgColor(ctx, 'rgba(59, 130, 246, 0.85)'),
+                borderColor: (ctx) => getBorderColor(ctx, '#3b82f6'),
+                borderWidth: (ctx) => getRadius(ctx, 6) === 10 ? 2 : 1,
+                pointRadius: (ctx) => getRadius(ctx, 6),
                 pointHoverRadius: 8,
               },
               {
                 label: q3Label,
                 data: dataQ3,
-                backgroundColor: 'rgba(234, 179, 8, 0.85)',
-                borderColor: '#eab308',
-                borderWidth: 1,
-                pointRadius: 6,
+                backgroundColor: (ctx) => getBgColor(ctx, 'rgba(234, 179, 8, 0.85)'),
+                borderColor: (ctx) => getBorderColor(ctx, '#eab308'),
+                borderWidth: (ctx) => getRadius(ctx, 6) === 10 ? 2 : 1,
+                pointRadius: (ctx) => getRadius(ctx, 6),
                 pointHoverRadius: 8,
               },
               {
                 label: q4Label,
                 data: dataQ4,
-                backgroundColor: 'rgba(239, 68, 68, 0.85)',
-                borderColor: '#ef4444',
-                borderWidth: 1,
-                pointRadius: 6,
+                backgroundColor: (ctx) => getBgColor(ctx, 'rgba(239, 68, 68, 0.85)'),
+                borderColor: (ctx) => getBorderColor(ctx, '#ef4444'),
+                borderWidth: (ctx) => getRadius(ctx, 6) === 10 ? 2 : 1,
+                pointRadius: (ctx) => getRadius(ctx, 6),
                 pointHoverRadius: 8,
               },
             ],
@@ -4831,6 +4858,12 @@
             },
           ],
         });
+      }
+
+      function highlightSearchedLevel() {
+        if (chartInstance) {
+          chartInstance.update();
+        }
       }
 
       // CSV Uploader Logic
@@ -5200,6 +5233,7 @@
       }
 
       // Initialize dashboard
+      document.getElementById('data-size-badge').innerText = `Data Size: ${dataset.length} Levels`;
       populateAxisSelectors();
       populateSelectors();
       buildPresetButtons();
